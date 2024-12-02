@@ -1,5 +1,7 @@
 .idea
 .venv
+venv
+.env
 chromedriver-linux64
 .pytest_cache
 __pycache__

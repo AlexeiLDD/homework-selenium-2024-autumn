@@ -1,4 +1,4 @@
-import pytest
+from ui.fixtures import *
 
 
 def pytest_addoption(parser):

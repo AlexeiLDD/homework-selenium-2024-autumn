@@ -1,4 +1,6 @@
 import pytest
+import os
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -54,3 +56,12 @@ def all_drivers(config, request):
     browser.get(url)
     yield browser
     browser.quit()
+
+@pytest.fixture(scope='session')
+def credentials():
+    load_dotenv()
+    USER = os.getenv('USER')
+    PASSWORD = os.getenv('PASSWORD')
+
+    return {'user':USER, 'password':PASSWORD}
+
