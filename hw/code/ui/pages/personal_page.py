@@ -13,7 +13,6 @@ class PersonalPage(BasePage):
     def delete_accaunt(self):
         self.click(self.locators.SETTINGS_BUTTON, timeout=10)
         self.click(self.locators.DELETE_BUTTON,timeout=10)
-        time.sleep(2)
         self.click(self.locators.SUBMIT_DELETE_BUTTON, timeout=10)
 
         return MainPage(self.driver)

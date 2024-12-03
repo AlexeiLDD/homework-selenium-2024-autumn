@@ -29,4 +29,4 @@ class BaseCase:
         if self.authorize:
             user = credentials['user']
             password = credentials['password']
-            self.main_page = self.login_page.login(user, password)
+            self.login_page.login(user, password)

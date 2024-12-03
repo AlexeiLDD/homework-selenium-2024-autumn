@@ -1,6 +1,8 @@
 import pytest
 import time
 
+from selenium.webdriver.support.wait import WebDriverWait
+
 from base import BaseCase
 
 
@@ -12,6 +14,7 @@ class TestLogin(BaseCase):
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])
 
+        WebDriverWait(self.driver, 10).until(lambda d: 'ads.vk.com' in d.current_url)
         assert self.driver.current_url == 'https://ads.vk.com/hq/registration' or self.driver.current_url == 'https://ads.vk.com/hq/overview'
 
 
@@ -27,17 +30,84 @@ class TestRegistration(BaseCase):
 
         personal_page = registration_page.teardown()
 
-        personal_page.delete_accaunt()
+        main_page = personal_page.delete_accaunt()
+        main_page.pass_func()
 
 
-    def test_registration_ads_individual_rus_seccess(self):
+    @pytest.mark.skip('skip')
+    def test_registration_ads_individual_rus_success(self):
         registration_page = self.login_page.change_registration_page()
 
-        registration_page.registration_ads_individual_rus_seccess()
+        registration_page.registration_ads_individual_rus_success()
 
         personal_page = registration_page.teardown()
 
-        personal_page.delete_accaunt()
+        main_page = personal_page.delete_accaunt()
+        main_page.pass_func()
+
+    
+    @pytest.mark.skip('skip')
+    def test_registration_ads_legal_belarus_success(self):
+        registration_page = self.login_page.change_registration_page()
+
+        registration_page.registration_ads_legal_belarus_success()
+
+        personal_page = registration_page.teardown()
+
+        main_page = personal_page.delete_accaunt()
+        main_page.pass_func()
+
+
+    # Warning. 
+    # Невозможно сохранение консистентности!
+    # После регистрации кабинета агенства его удаление возможно только через службу поддержки!
+    @pytest.mark.skip('skip')
+    def test_registration_agency_success(self):
+        registration_page = self.login_page.change_registration_page()
+
+        registration_page.registration_agency_success()
+
+        personal_page = registration_page.teardown()
+
+        main_page = personal_page.delete_accaunt()
+        main_page.pass_func() 
+
+
+    @pytest.mark.skip('skip')
+    def test_prohibited_country_registration(self):
+        registration_page = self.login_page.change_registration_page()
+
+        button = registration_page.prohibited_country_registration()
+
+        assert button.get_property('disabled')
+    
+
+    @pytest.mark.skip('skip')
+    def test_unvalid_email_registration(self):
+        registration_page = self.login_page.change_registration_page()
+
+        UNVALID_EMAILS = ['example', 'example@', 'example@mail.', 'example@mail.w']
+
+        for text in registration_page.unvalid_email_registration(UNVALID_EMAILS):
+            assert text == 'Некорректный email адрес'
+    
+
+    @pytest.mark.skip('skip')
+    def test_empty_registration(self):
+        registration_page = self.login_page.change_registration_page()
+
+        alert = registration_page.empty_registration()
+
+        assert alert.text == 'Обязательное поле'
+
+
+    @pytest.mark.skip('skip')
+    def test_unvalid_inn_registration(self):
+        registration_page = self.login_page.change_registration_page()
+
+        alert = registration_page.unvalid_inn_registration()
+
+        assert alert.text == 'Напишите не меньше 12 символов'
 
 
     @pytest.mark.skip('skip')

@@ -36,6 +36,11 @@ class BasePage(object):
     def input(self, locator, data, timeout=None):
         elem = self.find(locator, timeout=timeout)
         elem.send_keys(data)
+    
+    @allure.step('Clear')
+    def clear(self, locator, timeout=None):
+        elem = self.find(locator, timeout=timeout)
+        elem.clear()
 
     @allure.step('Search')
     def search(self, query):
