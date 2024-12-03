@@ -5,3 +5,4 @@ venv
 chromedriver-linux64
 .pytest_cache
 __pycache__
+/chromedriver-win64

@@ -2,7 +2,7 @@ from contextlib import contextmanager
 
 import pytest
 
-from ui.pages.vk_id_page import VkIdPage
+from hw.code.ui.pages.vk_id_page import VkIdPage
 
 
 class BaseCase:

@@ -28,7 +28,8 @@ def driver(config):
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         driver = webdriver.Chrome(
-            executable_path='./chromedriver-linux64/chromedriver',
+            #executable_path='./chromedriver-linux64/chromedriver',
+            executable_path=f"C:/Users/Pes_Tick/Documents/GitHub/homework-selenium-2024-autumn/chromedriver-win64/chromedriver.exe",
             options=options
         )
     else:
