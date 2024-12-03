@@ -57,11 +57,11 @@ def all_drivers(config, request):
     yield browser
     browser.quit()
 
+
 @pytest.fixture(scope='session')
 def credentials():
     load_dotenv()
-    USER = os.getenv('USER')
+    USER = os.getenv('TEST_USER')
     PASSWORD = os.getenv('PASSWORD')
 
-    return {'user':USER, 'password':PASSWORD}
-
+    return {'user': USER, 'password': PASSWORD}
