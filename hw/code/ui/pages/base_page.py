@@ -59,3 +59,7 @@ class BasePage(object):
         self.find(locator, timeout=timeout)
         elem = self.wait(timeout).until(EC.element_to_be_clickable(locator))
         elem.click()
+
+    @allure.step('Scroll')
+    def scroll_into_element(self, element: WebElement):
+       self.driver.execute_script('arguments[0].scrollIntoView({ behavior: "instant", block: "center", inline: "center" });', element)

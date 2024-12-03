@@ -2,7 +2,10 @@ from contextlib import contextmanager
 
 import pytest
 
+from selenium.webdriver.support.wait import WebDriverWait
+
 from ui.pages.vk_id_page import VkIdPage
+from ui.pages.main_page import MainPage
 
 
 class BaseCase:
@@ -26,7 +29,11 @@ class BaseCase:
         self.config = config
 
         self.login_page = VkIdPage(driver)
+        self.main_page = MainPage(driver)
         if self.authorize:
             user = credentials['user']
             password = credentials['password']
             self.login_page.login(user, password)
+
+    def wait_url_loading(self, url):
+        WebDriverWait(self.driver, 10).until(lambda d: url in d.current_url)

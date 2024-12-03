@@ -14,7 +14,7 @@ class TestLogin(BaseCase):
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])
 
-        WebDriverWait(self.driver, 10).until(lambda d: 'ads.vk.com' in d.current_url)
+        self.wait_url_loading('ads.vk.com')
         assert self.driver.current_url == 'https://ads.vk.com/hq/registration' or self.driver.current_url == 'https://ads.vk.com/hq/overview'
 
 
