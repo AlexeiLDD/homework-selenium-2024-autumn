@@ -13,7 +13,8 @@ class CampaignSettingsLocators:
                                           '1]/div/section/div/div/div[1]/div[1]/div[1]/div/div[2]/div/span')
     CAMPAIGN_BUDGET = (By.XPATH, '//*[@id="root"]/div/div[1]/div[1]/div[1]/div/div[1]/div/section/div/div/div['
                                  '2]/div/div/div/div/h4')
-    DIALOG_CLOSE_BTN = (By.XPATH, '//*[@id="_modal_28"]/div/div/div[3]/svg/use')
+    DIALOG_CLOSE_BTN = (By.XPATH, '//*[@id="_modal_28"]/div/div/div[2]/div[1]/div/div/div/div/button')
+    
 
     CAMPAIGN_TITLE = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section/div/div/div[1]/div')
     TITLE_INPUT = (By.TAG_NAME, 'textarea')
@@ -30,7 +31,7 @@ class CampaignActionsLocators:
     CATALOG_ACTION_BTN = (By.XPATH, '//div[@data-id="ecomm"]')
     LEADADS_ACTION_BTN = (By.XPATH, '//div[@data-id="leadads"]')
 
-    FEATURES_INPUT_SITE_ACTION = (By.XPATH, '//textarea[@class="vkuiTypography"]')
+    FEATURES_INPUT_SITE_ACTION = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[2]/form/div[3]/div/span/textarea')
     ACTION_INPUT_SITE_ACTION = (By.XPATH, '//input[@role="combobox"]')
     OPTIMIZATION_SWITCH_SITE_ACTION = (By.XPATH, '//input[@data-testid="budget-optimization"]')
     DATES_INPUTS_SITE_ACTION = (By.XPATH, '//*[@data-name="dates"]')
@@ -42,7 +43,7 @@ class CampaignActionsLocators:
 
     POLL_RADIOBTN = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[2]/form/div[1]/div/label[2]/div')
     LEADFORM_SELECT_LEADADS_ACTION = (By.XPATH, '//input[@data-testid="lead-form-select"]')
-    SPLIT_TEST_SWITCH_LEADADS_ACTION = (By.XPATH, '//input[@type="checkbox"]')
+    SPLIT_TEST_SWITCH_LEADADS_ACTION = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[2]/form/div[2]/div/div[2]/label')
     TYPE_COMBOBOX_LEADADAS_ACTION = (By.XPATH, '//input[@role="combobox"]')
 
 

@@ -1,7 +1,7 @@
 import time
 
 from selenium.webdriver import Keys
-from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
+from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, TimeoutException
 from ui.pages.base_page import BasePage, PageNotOpenedException
 from ui.locators.campaigns_locators import (CampaignsLocators, CampaignSettingsLocators, CampaignActionsLocators,
                                             CampaignBrandingLocators, AdvertsGroupsLocators, AdvertsLocators)
@@ -70,13 +70,16 @@ class CampaignSettings(BasePage):
         self.input(self.action_locators.DOMAIN_INPUT_SITE_ACTION, domain, timeout=5)
         self.input(self.action_locators.DOMAIN_INPUT_SITE_ACTION, Keys.ENTER, timeout=5)
 
-        err = self.find(self.action_locators.DOMAIN_INPUT_ERR, timeout=5).text
+        try:
+            err = self.find(self.action_locators.DOMAIN_INPUT_ERR, timeout=5).text
+        except TimeoutException:
+            err = None
 
         return err
 
     def check_inputs_site_action(self):
         try:
-            self.find(self.action_locators.FEATURES_INPUT_SITE_ACTION, timeout=3)
+            self.find(self.action_locators.FEATURES_INPUT_SITE_ACTION, timeout=5)
             self.find(self.action_locators.ACTION_INPUT_SITE_ACTION, timeout=3)
             self.find(self.action_locators.OPTIMIZATION_SWITCH_SITE_ACTION, timeout=3)
             self.find(self.action_locators.DATES_INPUTS_SITE_ACTION, timeout=3)
@@ -104,7 +107,7 @@ class CampaignSettings(BasePage):
 
         try:
             self.find(self.action_locators.OBJECT_RADIOBTN_CATALOG_ACTION, timeout=3)
-            self.find(self.action_locators.DOMAIN_INPUT_CATALOG_ACTION, timeout=3)
+            self.find(self.action_locators.DOMAIN_INPUT_CATALOG_ACTION, timeout=20)
 
             return True
 
@@ -112,11 +115,11 @@ class CampaignSettings(BasePage):
             return False
 
     def check_polls_leadads_action(self):
-        self.click(self.action_locators.LEADFORM_SELECT_LEADADS_ACTION, timeout=5)
-        self.click(self.action_locators.SPLIT_TEST_SWITCH_LEADADS_ACTION, timeout=5)
-
+        self.click(self.action_locators.LEADADS_ACTION_BTN, timeout=5)
+    
         try:
-            self.find(self.action_locators.TYPE_COMBOBOX_LEADADAS_ACTION, timeout=3)
+            self.find(self.action_locators.SPLIT_TEST_SWITCH_LEADADS_ACTION, timeout=5)
+            self.find(self.action_locators.LEADFORM_SELECT_LEADADS_ACTION, timeout=3)
 
             return True
 
