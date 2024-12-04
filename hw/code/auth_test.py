@@ -1,15 +1,12 @@
 import pytest
-import time
-
-from selenium.webdriver.support.wait import WebDriverWait
 
 from base import BaseCase
 
 
+@pytest.mark.skip('skip')
 class TestLogin(BaseCase):
     authorize = False
 
-    @pytest.mark.skip('skip')
     @pytest.mark.usefixtures('credentials')
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])
@@ -18,10 +15,20 @@ class TestLogin(BaseCase):
         assert self.driver.current_url == 'https://ads.vk.com/hq/registration' or self.driver.current_url == 'https://ads.vk.com/hq/overview'
 
 
+@pytest.mark.skip('skip')
 class TestRegistration(BaseCase):
     authorize = True
 
-    @pytest.mark.skip('skip')
+    # Warning:
+    # Метод необходим для сохранения консистентности!
+    # Перед прохождением тестов регистрации необходимо удалить существующий аккаунт!
+    def test_setup_class(self):
+        personal_page = self.login_page.change_personal_page()
+
+        main_page = personal_page.delete_accaunt()
+        main_page.pass_func()
+    
+    
     def test_registration_success(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -34,7 +41,6 @@ class TestRegistration(BaseCase):
         main_page.pass_func()
 
 
-    @pytest.mark.skip('skip')
     def test_registration_ads_individual_rus_success(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -45,8 +51,7 @@ class TestRegistration(BaseCase):
         main_page = personal_page.delete_accaunt()
         main_page.pass_func()
 
-    
-    @pytest.mark.skip('skip')
+
     def test_registration_ads_legal_belarus_success(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -58,7 +63,7 @@ class TestRegistration(BaseCase):
         main_page.pass_func()
 
 
-    # Warning. 
+    # Warning:
     # Невозможно сохранение консистентности!
     # После регистрации кабинета агенства его удаление возможно только через службу поддержки!
     @pytest.mark.skip('skip')
@@ -73,7 +78,6 @@ class TestRegistration(BaseCase):
         main_page.pass_func() 
 
 
-    @pytest.mark.skip('skip')
     def test_prohibited_country_registration(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -82,7 +86,6 @@ class TestRegistration(BaseCase):
         assert button.get_property('disabled')
     
 
-    @pytest.mark.skip('skip')
     def test_unvalid_email_registration(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -92,7 +95,6 @@ class TestRegistration(BaseCase):
             assert text == 'Некорректный email адрес'
     
 
-    @pytest.mark.skip('skip')
     def test_empty_registration(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -101,7 +103,6 @@ class TestRegistration(BaseCase):
         assert alert.text == 'Обязательное поле'
 
 
-    @pytest.mark.skip('skip')
     def test_unvalid_inn_registration(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -110,7 +111,6 @@ class TestRegistration(BaseCase):
         assert alert.text == 'Напишите не меньше 12 символов'
 
 
-    @pytest.mark.skip('skip')
     def test_switch_language(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -122,3 +122,13 @@ class TestRegistration(BaseCase):
         registration_page.click(registration_page.locators.ENGLISH_SELECT, timeout=1)
         assert title.text == 'Welcome \nto VK Ads'
 
+    
+    # Warning:
+    # Метод необходим для сохранения консистентности!
+    # После прохождения тестов регистрации необходимо заново зарегистрировать аккаунт!
+    def test_teardown_class(self):
+        registration_page = self.login_page.change_registration_page()
+
+        registration_page.registration_success()
+        registration_page.teardown()
+        self.wait_url_loading('https://ads.vk.com/hq/overview')

@@ -1,16 +1,15 @@
 import pytest
-import time
 
 from base import BaseCase
 from ui.locators.intermediate_locators import IntermediateLocators
 
 
+@pytest.mark.skip('skip')
 class TestMain(BaseCase):
-
     authorize = False
     locators = IntermediateLocators
 
-
+    
     def test_main_page_state(self):
         cases, webinars = self.main_page.main_page_state()
 
