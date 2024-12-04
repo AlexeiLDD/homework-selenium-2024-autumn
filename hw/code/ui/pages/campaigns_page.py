@@ -1,7 +1,7 @@
 import time
 
 from selenium.webdriver import Keys
-from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, TimeoutException
+from selenium.common.exceptions import ElementClickInterceptedException, TimeoutException
 from ui.pages.base_page import BasePage, PageNotOpenedException
 from ui.locators.campaigns_locators import (CampaignsLocators, CampaignSettingsLocators, CampaignActionsLocators,
                                             CampaignBrandingLocators, AdvertsGroupsLocators, AdvertsLocators)
@@ -86,7 +86,7 @@ class CampaignSettings(BasePage):
 
             return True
 
-        except NoSuchElementException:
+        except TimeoutException:
             return False
 
     def check_inputs_catalog_action(self):
@@ -99,22 +99,22 @@ class CampaignSettings(BasePage):
 
             return True
 
-        except NoSuchElementException:
-            return False
-
-    def check_leadform_leadads_action(self):
-        self.click(self.action_locators.LEADADS_ACTION_BTN, timeout=5)
-
-        try:
-            self.find(self.action_locators.OBJECT_RADIOBTN_CATALOG_ACTION, timeout=3)
-            self.find(self.action_locators.DOMAIN_INPUT_CATALOG_ACTION, timeout=20)
-
-            return True
-
-        except NoSuchElementException:
+        except TimeoutException:
             return False
 
     def check_polls_leadads_action(self):
+        self.click(self.action_locators.LEADADS_ACTION_BTN, timeout=5)
+        self.click(self.action_locators.POLL_RADIOBTN, timeout=5)
+
+        try:
+            self.find(self.action_locators.TYPE_COMBOBOX_LEADADAS_ACTION, timeout=3)
+
+            return True
+
+        except TimeoutException:
+            return False
+
+    def check_leadform_leadads_action(self):
         self.click(self.action_locators.LEADADS_ACTION_BTN, timeout=5)
     
         try:
@@ -123,7 +123,7 @@ class CampaignSettings(BasePage):
 
             return True
 
-        except NoSuchElementException:
+        except TimeoutException:
             return False
 
     def check_default_price_branding(self):
@@ -181,7 +181,7 @@ class CampaignSettings(BasePage):
 
             return True
 
-        except NoSuchElementException:
+        except TimeoutException:
             return False
 
     def change_audience(self):
@@ -207,5 +207,5 @@ class CampaignSettings(BasePage):
             self.find(self.adverts_locators.PUBLISH_BTN, timeout=5)
 
             return True
-        except NoSuchElementException:
+        except TimeoutException:
             return False

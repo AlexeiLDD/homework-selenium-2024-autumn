@@ -80,7 +80,7 @@ class TestCampaignsPage(BaseCase):
 
         assert exists
 
-    @pytest.mark.skip('skip') # TODO
+    @pytest.mark.skip('skip')
     def test_polls_leadads_action(self):
         self.create_campaign()
 
@@ -88,7 +88,7 @@ class TestCampaignsPage(BaseCase):
 
         assert exists
 
-    @pytest.mark.skip('skip') # TODO
+    @pytest.mark.skip('skip')
     def test_leadform_leadads_action(self):
         self.create_campaign()
 
