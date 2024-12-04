@@ -2,8 +2,6 @@ import pytest
 
 from base import BaseCase
 
-
-@pytest.mark.skip('skip')
 class TestLogin(BaseCase):
     authorize = False
 
