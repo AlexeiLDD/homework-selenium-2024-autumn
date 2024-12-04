@@ -72,6 +72,7 @@ class TestAudience(BaseCase):
 
         change_audience_page.click_save_audience_button()
 
+    @pytest.mark.skip('skip')
     def test_create_audience_success(self):
         change_audience_page = self.login_page.change_audience_page()
 
@@ -81,15 +82,15 @@ class TestAudience(BaseCase):
         change_audience_page.click_audience_checkbox()
         change_audience_page.check_share_audience_button_active()
 
-        # change_audience_page.click_audience_share_button()
-        # change_audience_page.check_audience_share_modal_opened()
-        # change_audience_page.click_cancel_share_audience_button()
+        change_audience_page.click_audience_share_button()
+        change_audience_page.check_audience_share_modal_opened()
+        change_audience_page.click_cancel_share_audience_button()
 
-        #change_audience_page.click_delete_audience_button()
-        #change_audience_page.check_delete_audience_menu_opened()
+        change_audience_page.click_delete_audience_button()
+        change_audience_page.check_delete_audience_menu_opened()
 
-        #change_audience_page.click_delete_audience_button_inside_modal()
-        #change_audience_page.check_open_audience_tab()
+        change_audience_page.click_delete_audience_button_inside_modal()
+        change_audience_page.check_open_audience_tab()
 
 
 

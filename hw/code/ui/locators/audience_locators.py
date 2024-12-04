@@ -35,14 +35,13 @@ class AudiencesLocators:
     SHARE_AUDIENCE_BUTTON = (By.XPATH, "//*[@id='audience']/div/div[2]/div/div[1]/div[1]/button[1]")
     OPEN_ACCESS_HEADER_LABEL = (By.XPATH, "//*[@id='_modal_40-label']")
 
-    SAVE_SHARE_AUDIENCE_BUTTON = (By.XPATH, "//*[@id='_modal_40']/div/div/div[2]/div[1]/div/div[2]/div/button[2]")
-    CANCEL_SHARE_AUDIENCE_BUTTON = (By.XPATH, "//*[@id='_modal_40']/div/div/div[2]/div[1]/div/div[2]/div/button[1]")
+    SAVE_SHARE_AUDIENCE_BUTTON = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div/button[2]")
+    CANCEL_SHARE_AUDIENCE_BUTTON = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div/button[1]")
 
     DELETE_AUDIENCE_BUTTON = (By.XPATH, "//*[@id='audience']/div/div[2]/div/div[1]/div[1]/button[2]")
-    DELETE_AUDIENCE_HEADER_LABEL = (By.XPATH, "//*[@id='_modal_59']/div/div/div[2]/div[1]/div/div/div/h2")
+    DELETE_AUDIENCE_HEADER_LABEL = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div/div/h2")
 
-    DELETE_AUDIENCE_INSIDE_MODAL_DELETE_BUTTON = (By.XPATH, "// *[ @ id = '_modal_53'] / div / div / div[2] / div[1] / div / div / div / div / button[2] / span / span")
-
+    DELETE_AUDIENCE_INSIDE_MODAL_DELETE_BUTTON = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div/div/div/button[2]")
 
     UPLOAD_LIST_BUTTON = (By.XPATH, "//*[@id='audience.users_list']/div/div[2]/div/div[2]/div/div/div[2]/div/button")
     UPLOAD_LIST_HEADER_LABEL = (By.XPATH, "//*[@id='root']/div/div[2]/div/div[2]/div/div[1]/h2")

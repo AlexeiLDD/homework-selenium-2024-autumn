@@ -1,6 +1,7 @@
 from hw.code.ui.pages.base_page import BasePage
 from hw.code.ui.locators.vk_id_locators import VkIdPageLocators
 from hw.code.ui.pages.audience_page import AudiencePage
+from hw.code.ui.pages.leadforms_page import LeadFormsPage
 
 
 class VkIdPage(BasePage):
@@ -21,4 +22,7 @@ class VkIdPage(BasePage):
 
     def change_audience_page(self):
         return AudiencePage(self.driver)
+
+    def change_leadforms_page(self):
+        return LeadFormsPage(self.driver)
         
