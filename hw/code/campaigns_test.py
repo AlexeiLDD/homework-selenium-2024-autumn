@@ -1,5 +1,5 @@
 from datetime import date
-import pytest
+
 from selenium.webdriver.support.wait import WebDriverWait
 
 from base import BaseCase
@@ -9,7 +9,7 @@ from ui.pages.campaigns_page import CampaignsPage, CampaignSettings
 campaigns_url = 'https://ads.vk.com/hq/dashboard/ad_plans'
 
 
-class TestCampaignsPage(BaseCase):
+class TestCampaigns(BaseCase):
     authorize = True
 
     def open_campaigns(self):
@@ -148,7 +148,8 @@ class TestCampaignsPage(BaseCase):
     def test_audience_changes(self):
         self.switch_to_adverts_groups()
 
-        WebDriverWait(self.driver, 10).until(lambda d: 'ad_group/new-ad-group' in d.current_url)
+        url = 'ad_group/new-ad-group'
+        self.wait_url_loading(url)
 
         audience = self.settings_page.change_audience()
 
@@ -163,7 +164,8 @@ class TestCampaignsPage(BaseCase):
     def test_advert_title(self):
         self.switch_to_adverts()
 
-        WebDriverWait(self.driver, 10).until(lambda d: 'ad/new-ad-form' in d.current_url)
+        url = 'ad/new-ad-form'
+        self.wait_url_loading(url)
 
         title = self.settings_page.check_advert_title()
         
@@ -173,7 +175,8 @@ class TestCampaignsPage(BaseCase):
     def test_publish_btn(self):
         self.switch_to_adverts()
 
-        WebDriverWait(self.driver, 10).until(lambda d: 'ad/new-ad-form' in d.current_url)
+        url = 'ad/new-ad-form'
+        self.wait_url_loading(url)
 
         exists = self.settings_page.check_publish_btn()
 
