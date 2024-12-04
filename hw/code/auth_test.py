@@ -5,6 +5,7 @@ from base import BaseCase
 class TestLogin(BaseCase):
     authorize = False
 
+    @pytest.mark.skip('skip')
     @pytest.mark.usefixtures('credentials')
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])

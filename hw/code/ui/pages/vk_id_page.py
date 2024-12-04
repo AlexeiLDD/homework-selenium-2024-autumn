@@ -4,7 +4,10 @@ from ui.pages.base_page import BasePage
 from ui.pages.registration_page import RegistrationPage
 from ui.pages.personal_page import PersonalPage
 from ui.locators.vk_id_locators import VkIdPageLocators
+from ui.pages.audience_page import AudiencePage
+from ui.pages.leadforms_page import LeadFormsPage
 
+import time
 
 class VkIdPage(BasePage):
 
@@ -29,4 +32,11 @@ class VkIdPage(BasePage):
     
     def change_personal_page(self):
         return PersonalPage(self.driver)
+        time.sleep(30)
+
+    def change_audience_page(self):
+        return AudiencePage(self.driver)
+
+    def change_leadforms_page(self):
+        return LeadFormsPage(self.driver)
     
