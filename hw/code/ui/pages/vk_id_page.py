@@ -9,6 +9,7 @@ from ui.pages.leadforms_page import LeadFormsPage
 
 import time
 
+
 class VkIdPage(BasePage):
 
     locators = VkIdPageLocators
@@ -24,15 +25,12 @@ class VkIdPage(BasePage):
         self.click(self.locators.USE_PASSWORD_LINK, timeout=10)
         self.input(self.locators.PASSWORD_INPUT, password, timeout=10)
         self.click(self.locators.SUBMIT_BUTTON, timeout=10)
-        time.sleep(30)
-        self.wait(timeout=3000)
     
     def change_registration_page(self):
         return RegistrationPage(self.driver)
     
     def change_personal_page(self):
         return PersonalPage(self.driver)
-        time.sleep(30)
 
     def change_audience_page(self):
         return AudiencePage(self.driver)

@@ -4,10 +4,8 @@ from base import BaseCase
 from ui.pages.site_page import SitePage
 
 
-@pytest.mark.skip('skip')
 class TestSite(BaseCase):
     authorize = True
-
 
     @pytest.fixture
     def site_page(self):

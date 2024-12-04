@@ -1,11 +1,12 @@
 from ui.pages.base_page import BasePage
 from ui.locators.site_locators import SiteLocators
 
+
 VALID_DOMEN = 'www.vol-4-ok.ru'
 UNVALID_DOMEN = 'url'
 
 class SitePage(BasePage):
-
+    
     locators = SiteLocators
     url = 'https://ads.vk.com/hq/pixels'
 

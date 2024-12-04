@@ -1,5 +1,4 @@
 from contextlib import contextmanager
-
 import pytest
 
 from selenium.webdriver.support.wait import WebDriverWait

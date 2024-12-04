@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 class LeadFormsLocators:
-    LEADFORMS_TAB_BUTTON = (By.XPATH, "//*[@id='root']/div/div[1]/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/div/section[2]/div/a[4]")
     NO_LEADFORMS_LABEL = (By.XPATH, "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[2]/section/div/div/div/div/div/div[2]/div[2]/div/div/div/div/h2")
 
     CREATE_LEAD_FORM_BUTTON= (By.XPATH, '//*[@id="leadads.leadforms"]/div/div[2]/div/div[2]/div/button')

@@ -1,6 +1,7 @@
 from ui.pages.base_page import BasePage
 from ui.locators.main_locators import MainLocators
-import time
+
+
 class MainPage(BasePage):
 
     locators = MainLocators

@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 class AudiencesLocators:
-    AUDIENCES_BUTTON = (By.XPATH, "//*[@id='root']/div/div[1]/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/div/section[1]/a[3]")
     NO_AUDIENCES_LABEL = (By.XPATH, "//*[@id='audience']/div/div[2]/div/div[2]/div/div/h2")
 
     LIST_USERS_TAB = (By.XPATH, "//*[@id='tab_audience.users_list']")

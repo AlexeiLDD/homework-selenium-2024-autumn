@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.support.ui import Select
 
 from ui.pages.base_page import BasePage
@@ -11,7 +9,7 @@ VALID_EMAIL = 'example@mail.ru'
 UNVALID_INN = '1234567890'
 
 class RegistrationPage(BasePage):
-
+    
     locators = RegistrationLocators
     url = 'https://ads.vk.com/hq/registration'
 

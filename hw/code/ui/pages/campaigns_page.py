@@ -8,6 +8,7 @@ from ui.locators.campaigns_locators import (CampaignsLocators, CampaignSettingsL
 
 
 class CampaignsPage(BasePage):
+    
     locators = CampaignsLocators
     url = 'https://ads.vk.com/hq/overview'
 

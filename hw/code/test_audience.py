@@ -1,25 +1,33 @@
 import pytest
-import time
-
-from selenium.webdriver.support.wait import WebDriverWait
 
 from base import BaseCase
+
+from ui.pages.audience_page import AudiencePage
+
 
 class TestAudience(BaseCase):
     authorize = True
 
-    @pytest.mark.skip('skip')
-    def test_audiences_tab_success(self):
-        change_audience_page = self.login_page.change_audience_page()
+    @pytest.fixture
+    def change_audience_page(self):
+        self.personal_page = self.login_page.change_personal_page()
 
-        change_audience_page.click_audience_button()
+        self.get_audience_page()
+
+        return AudiencePage(self.driver)
+    
+
+    def get_audience_page(self):
+        self.personal_page.click(self.personal_page.locators.AUDIENCES_BUTTON, timeout=10)
+
+        self.wait_url_loading('https://ads.vk.com/hq/audience')
+
+
+    def test_audiences_tab_success(self, change_audience_page):
         change_audience_page.check_open_audience_tab()
 
-    @pytest.mark.skip('skip')
-    def test_user_lists_success(self):
-        change_audience_page = self.login_page.change_audience_page()
 
-        change_audience_page.click_audience_button()
+    def test_user_lists_success(self, change_audience_page):
         change_audience_page.check_open_audience_tab()
 
         change_audience_page.click_list_users_tab()
@@ -28,11 +36,8 @@ class TestAudience(BaseCase):
         change_audience_page.click_upload_list_button()
         change_audience_page.check_upload_list_menu_opened()
 
-    @pytest.mark.skip('skip')
-    def test_offline_conversation_success(self):
-        change_audience_page = self.login_page.change_audience_page()
 
-        change_audience_page.click_audience_button()
+    def test_offline_conversation_success(self, change_audience_page):
         change_audience_page.check_open_audience_tab()
 
         change_audience_page.click_offline_conversation_tab()
@@ -41,11 +46,8 @@ class TestAudience(BaseCase):
         change_audience_page.click_delete_offline_upload_list_button()
         change_audience_page.check_offline_upload_list_menu_opened()
 
-    @pytest.mark.skip('skip')
-    def test_create_audience_success(self):
-        change_audience_page = self.login_page.change_audience_page()
 
-        change_audience_page.click_audience_button()
+    def test_create_audience_success(self, change_audience_page):
         change_audience_page.check_open_audience_tab()
 
         change_audience_page.click_create_audience_button()
@@ -72,11 +74,9 @@ class TestAudience(BaseCase):
 
         change_audience_page.click_save_audience_button()
 
-    @pytest.mark.skip('skip')
-    def test_create_audience_success(self):
-        change_audience_page = self.login_page.change_audience_page()
 
-        change_audience_page.click_audience_button()
+    def test_create_audience_success(self, change_audience_page):
+        change_audience_page.check_open_audience_tab()
         change_audience_page.check_audience_item_added()
 
         change_audience_page.click_audience_checkbox()

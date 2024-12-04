@@ -3,11 +3,10 @@ from datetime import date
 from selenium.webdriver.support.wait import WebDriverWait
 
 from base import BaseCase
-
 from ui.pages.campaigns_page import CampaignsPage, CampaignSettings
 
-campaigns_url = 'https://ads.vk.com/hq/dashboard/ad_plans'
 
+campaigns_url = 'https://ads.vk.com/hq/dashboard/ad_plans'
 
 class TestCampaigns(BaseCase):
     authorize = True

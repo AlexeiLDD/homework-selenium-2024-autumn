@@ -1,19 +1,31 @@
 import pytest
-import time
-
-from selenium.webdriver.support.wait import WebDriverWait
 
 from base import BaseCase
+
+from ui.pages.leadforms_page import LeadFormsPage
+
 
 class TestLeadForms(BaseCase):
     authorize = True
 
-    #@pytest.mark.skip('skip')
-    def test_create_leadform_success(self):
-        change_leadforms_page = self.login_page.change_leadforms_page()
+    @pytest.fixture
+    def change_leadforms_page(self):
+        self.personal_page = self.login_page.change_personal_page()
 
+        self.get_leadforms_page()
+
+        return LeadFormsPage(self.driver)
+    
+
+    def get_leadforms_page(self):
+        self.personal_page.click(self.personal_page.locators.LEADFORMS_BUTTON, timeout=10)
+
+        self.wait_url_loading('https://ads.vk.com/hq/leadads/leadforms')
+
+
+    def test_create_leadform_success(self, change_leadforms_page):
         change_leadforms_page.click_leadforms_tab_button()
-        #change_leadforms_page.check_no_leadforms_label()
+        change_leadforms_page.check_no_leadforms_label()
 
         change_leadforms_page.click_create_lead_from_button()
         change_leadforms_page.check_new_leadform_menu_1st_step_label()

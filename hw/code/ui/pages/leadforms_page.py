@@ -1,16 +1,11 @@
 from ui.locators.leadforms_locators import LeadFormsLocators
 from ui.pages.base_page import BasePage
-import time
+
 
 class LeadFormsPage(BasePage):
+
     url = "https://ads.vk.com/hq/leadads/leadforms"
     locators = LeadFormsLocators
-
-    def __init__(self, driver):
-        self.driver = driver
-
-    def click_leadforms_tab_button(self):
-        self.click(self.locators.LEADFORMS_TAB_BUTTON, timeout=10)
 
     def check_no_leadforms_label(self):
         self.find(self.locators.NO_LEADFORMS_LABEL, timeout=10)
@@ -47,7 +42,6 @@ class LeadFormsPage(BasePage):
 
     def click_clickable_image_button(self):
         self.click(self.locators.CLICKABLE_IMAGE, timeout=10)
-        time.sleep(2)
 
     def input_company_name(self):
         self.input(self.locators.COMPANY_NAME_INPUT, 'Рога и Копыта', timeout=10)

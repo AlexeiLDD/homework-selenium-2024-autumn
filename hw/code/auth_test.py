@@ -2,10 +2,10 @@ import pytest
 
 from base import BaseCase
 
+
 class TestLogin(BaseCase):
     authorize = False
 
-    @pytest.mark.skip('skip')
     @pytest.mark.usefixtures('credentials')
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])
@@ -14,7 +14,6 @@ class TestLogin(BaseCase):
         assert self.driver.current_url == 'https://ads.vk.com/hq/registration' or self.driver.current_url == 'https://ads.vk.com/hq/overview'
 
 
-@pytest.mark.skip('skip')
 class TestRegistration(BaseCase):
     authorize = True
 
