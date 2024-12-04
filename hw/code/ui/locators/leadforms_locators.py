@@ -4,7 +4,7 @@ class LeadFormsLocators:
     LEADFORMS_TAB_BUTTON = (By.XPATH, "//*[@id='root']/div/div[1]/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/div/section[2]/div/a[4]")
     NO_LEADFORMS_LABEL = (By.XPATH, "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[2]/section/div/div/div/div/div/div[2]/div[2]/div/div/div/div/h2")
 
-    CREATE_LEAD_FORM_BUTTON= (By.XPATH, "//*[@id='leadads.leadforms']/div/div[2]/div[1]/div[1]/button")
+    CREATE_LEAD_FORM_BUTTON= (By.XPATH, '//*[@id="leadads.leadforms"]/div/div[2]/div/div[2]/div/button')
 
     NEW_LEAD_FORM_HEADER_LABEL= (By.XPATH, "//*[@id='root']/div/div[2]/div/div[2]/form/div[1]/h2")
 
@@ -50,6 +50,3 @@ class LeadFormsLocators:
     SAVE_BUTTON = (By.XPATH, "//*[@id='root']/div/div[2]/div/div[2]/form/div[2]/div[1]/div[2]/div/button[2]")
 
     ACTIVE_LEADFORD_ITEM = (By.XPATH, "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[2]/section/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]/div/div/div[4]")
-
-    # = (By.XPATH, "")
-    # = (By.XPATH, "")

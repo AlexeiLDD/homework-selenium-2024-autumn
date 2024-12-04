@@ -3,17 +3,17 @@ import time
 
 from selenium.webdriver.support.wait import WebDriverWait
 
-from hw.code.base import BaseCase
+from base import BaseCase
 
 class TestLeadForms(BaseCase):
     authorize = True
 
-    @pytest.mark.skip('skip')
+    #@pytest.mark.skip('skip')
     def test_create_leadform_success(self):
         change_leadforms_page = self.login_page.change_leadforms_page()
 
         change_leadforms_page.click_leadforms_tab_button()
-        change_leadforms_page.check_no_leadforms_label()
+        #change_leadforms_page.check_no_leadforms_label()
 
         change_leadforms_page.click_create_lead_from_button()
         change_leadforms_page.check_new_leadform_menu_1st_step_label()

@@ -3,7 +3,7 @@ import time
 
 from selenium.webdriver.support.wait import WebDriverWait
 
-from hw.code.base import BaseCase
+from base import BaseCase
 
 class TestAudience(BaseCase):
     authorize = True
@@ -91,11 +91,4 @@ class TestAudience(BaseCase):
 
         change_audience_page.click_delete_audience_button_inside_modal()
         change_audience_page.check_open_audience_tab()
-
-
-
-
-
-
-
 

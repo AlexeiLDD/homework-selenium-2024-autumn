@@ -1,7 +1,7 @@
 import pytest
 import time
 
-from hw.code.base import BaseCase
+from base import BaseCase
 
 class TestLogin(BaseCase):
     authorize = False

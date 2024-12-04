@@ -1,13 +1,10 @@
-from hw.code.ui.locators.audience_locators import AudiencesLocators
-from hw.code.ui.pages.base_page import BasePage
+from ui.locators.audience_locators import AudiencesLocators
+from ui.pages.base_page import BasePage
 import time
 
 class AudiencePage(BasePage):
     url = "https://ads.vk.com/"
     locators = AudiencesLocators
-
-    def __init__(self, driver):
-        self.driver = driver
 
     def click_audience_button(self):
         self.click(self.locators.AUDIENCES_BUTTON, timeout=1000)
@@ -125,10 +122,3 @@ class AudiencePage(BasePage):
 
     def check_offline_upload_list_menu_opened(self):
         self.find(self.locators.OFFLINE_UPLOAD_LIST_HEADER_LABEL , timeout=1000)
-
-
-
-
-
-
-
