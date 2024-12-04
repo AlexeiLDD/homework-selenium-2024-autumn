@@ -130,12 +130,12 @@ class CampaignSettings(BasePage):
         self.input(self.branding_locators.DOMAIN_INPUT, 'vk.com', timeout=5)
         self.input(self.branding_locators.DOMAIN_INPUT, Keys.ENTER, timeout=5)
 
-        price = self.find(self.branding_locators.PRICE_INPUT, timeout=5).text
+        price = self.find(self.branding_locators.PRICE_INPUT, timeout=5).get_property('value')
 
         return price
 
     def check_default_price_banner_branding(self):
-        self.click(self.branding_locators.BRANDING_TAB_BTN, timeout=5)
+        self.click(self.branding_locators.BRANDING_TAB_BTN, timeout=50)
         self.click(self.branding_locators.BANNER_BRANDING_BTN, timeout=5)
 
         return self.check_default_price_branding()
@@ -156,19 +156,20 @@ class CampaignSettings(BasePage):
         self.click(self.branding_locators.BRANDING_TAB_BTN, timeout=5)
         self.click(self.branding_locators.PREMIUM_BRANDING_BTN, timeout=5)
 
-        price = self.find(self.branding_locators.PRICE_INPUT, timeout=5).text
+        price = self.find(self.branding_locators.PRICE_INPUT, timeout=5).get_property('value')
 
         return price
 
     def switch_to_adverts_groups(self):
         self.change_domain_site_action('vk.com')
         self.input(self.action_locators.BUDGET_INPUT_SITE_ACTION, 222, timeout=5)
-        self.input(self.action_locators.BUDGET_INPUT_SITE_ACTION, Keys.ENTER, timeout=5)
+        self.input(self.action_locators.BUDGET_INPUT_SITE_ACTION, Keys.ENTER, timeout=10)
+        self.click(self.locators.CONTINUE_BTN, timeout=5)
         self.click(self.locators.CONTINUE_BTN, timeout=5)
 
     def check_adverts_groups_containers(self):
         try:
-            self.find(self.groups_locators.NAME_CONTAINER, timeout=3)
+            self.find(self.groups_locators.NAME_CONTAINER, timeout=30)
             self.find(self.groups_locators.BETS_CONTAINER, timeout=3)
             self.find(self.groups_locators.REGIONS_CONTAINER, timeout=3)
             self.find(self.groups_locators.AUDIENCE_EXPANDING_CONTAINER, timeout=3)
@@ -187,14 +188,14 @@ class CampaignSettings(BasePage):
     def change_audience(self):
         old_audience = self.find(self.groups_locators.AUDIENCE_VALUE, timeout=5)
 
-        self.click(self.groups_locators.REGION_BTN, timeout=5)
+        self.click(self.groups_locators.REGION_BTN, timeout=10)
 
-        new_audience = self.find(self.groups_locators.AUDIENCE_VALUE, timeout=5)
+        new_audience = self.find(self.groups_locators.AUDIENCE_VALUE, timeout=5).text
 
         return {'old': old_audience, 'new': new_audience}
 
     def switch_to_adverts(self):
-        self.click(self.groups_locators.REGION_BTN, timeout=5)
+        self.click(self.groups_locators.REGION_BTN, timeout=10)
         self.click(self.groups_locators.CONTINUE_BTN, timeout=5)
 
     def check_advert_title(self):

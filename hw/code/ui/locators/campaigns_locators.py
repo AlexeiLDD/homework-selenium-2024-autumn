@@ -48,7 +48,7 @@ class CampaignActionsLocators:
 
 
 class CampaignBrandingLocators:
-    BRANDING_TAB_BTN = (By.XPATH, '//input[@data-testid="tab-branding"]')
+    BRANDING_TAB_BTN = (By.XPATH, '//*[@id="tab_branding"]')
 
     BANNER_BRANDING_BTN = (By.XPATH, '//div[@data-id="branding_multi"]')
     VIDEO_BRANDING_BTN = (By.XPATH, '//div[@data-id="branding_video"]')
@@ -60,7 +60,7 @@ class CampaignBrandingLocators:
 
 
 class AdvertsGroupsLocators:
-    REGION_BTN = (By.XPATH, '//*[@id="react-collapsed-panel-:r2i:"]/fieldset/div/div/div[1]/div[2]/button[2]')
+    REGION_BTN = (By.XPATH, '/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div/div/div/div[1]/section[2]/div[2]/fieldset/div/div/div[1]/div[2]/button[2]')
     AUDIENCE_VALUE = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div[2]/section/div/div/div/div/div/div['
                                 '3]/div[2]/div[2]')
     CONTINUE_BTN = (By.XPATH, '//*[@id="footer"]/div/div/div[2]/div[2]/button')
