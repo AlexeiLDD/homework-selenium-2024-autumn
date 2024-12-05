@@ -14,3 +14,10 @@ class PersonalPage(BasePage):
         self.click(self.locators.SUBMIT_DELETE_BUTTON, timeout=10)
 
         return MainPage(self.driver)
+    
+    def delete_legal_accaunt(self):
+        self.click(self.locators.SETTINGS_BUTTON, timeout=10)
+        self.click(self.locators.DELETE_LEGAL_BUTTON,timeout=10)
+        self.click(self.locators.SUBMIT_DELETE_BUTTON, timeout=10)
+
+        return MainPage(self.driver)

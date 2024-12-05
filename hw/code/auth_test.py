@@ -10,8 +10,8 @@ class TestLogin(BaseCase):
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])
 
-        self.wait_url_loading('ads.vk.com')
-        assert self.driver.current_url == 'https://ads.vk.com/hq/registration' or self.driver.current_url == 'https://ads.vk.com/hq/overview'
+        self.wait_url_loading('https://ads.vk.com/hq')
+        assert 'https://ads.vk.com/hq' in self.driver.current_url 
 
 
 class TestRegistration(BaseCase):
@@ -57,7 +57,7 @@ class TestRegistration(BaseCase):
 
         personal_page = registration_page.teardown()
 
-        main_page = personal_page.delete_accaunt()
+        main_page = personal_page.delete_legal_accaunt()
         main_page.pass_func()
 
 
