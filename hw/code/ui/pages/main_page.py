@@ -1,9 +1,10 @@
+from selenium.common.exceptions import TimeoutException
+
 from ui.pages.base_page import BasePage
 from ui.locators.main_locators import MainLocators
 
 
 class MainPage(BasePage):
-
     locators = MainLocators
     url = 'https://ads.vk.com/'
 
@@ -20,19 +21,22 @@ class MainPage(BasePage):
     def main_page_state(self):
         self.setup()
 
-        self.find(self.locators.CAROUSEL, timeout=10)
-        cases = self.find(self.locators.COMPANY_CASE_HEADER, timeout=10)
-        webinars = self.find(self.locators.WEBINARS_HEADER, timeout=10)
-        self.find(self.locators.NEWS_HEADER, timeout=10)
+        try:
+            self.find(self.locators.CAROUSEL, timeout=10)
+            cases = self.find(self.locators.COMPANY_CASE_HEADER, timeout=10)
+            webinars = self.find(self.locators.WEBINARS_HEADER, timeout=10)
+            self.find(self.locators.NEWS_HEADER, timeout=10)
 
-        return cases, webinars
+            return cases, webinars
+        except TimeoutError:
+            return None, None
 
     def carousel_first_section(self):
         self.setup()
 
         self.click(self.locators.FIRST_BULLET, timeout=10)
         self.click(self.locators.GET_BONUSES_BUTTON, timeout=10)
-    
+
     def carousel_second_section(self):
         self.setup()
 
@@ -44,16 +48,19 @@ class MainPage(BasePage):
 
         self.click(self.locators.THIRD_BULLET, timeout=10)
         self.click(self.locators.MORE_DETAILS_BUTTON, timeout=10)
-    
+
     def choose_case(self):
         self.setup()
 
-        case = self.find(self.locators.FIRST_CASE_TITLE, timeout=10)
-        self.scroll_into_element(case)
-        self.click(self.locators.FIRST_CASE_TITLE, timeout=10)
+        try:
+            case = self.find(self.locators.FIRST_CASE_TITLE, timeout=10)
+            self.scroll_into_element(case)
+            self.click(self.locators.FIRST_CASE_TITLE, timeout=10)
 
-        return case.text
-    
+            return case.text
+        except TimeoutException:
+            return None
+
     def show_all_cases(self):
         self.setup()
 
@@ -71,8 +78,11 @@ class MainPage(BasePage):
     def choose_news(self):
         self.setup()
 
-        news = self.find(self.locators.NEWS_HEADER, timeout=10)
-        self.scroll_into_element(news)
-        self.click(self.locators.NEWS_DETAILS_BUTTON, timeout=10)
+        try:
+            news = self.find(self.locators.NEWS_HEADER, timeout=10)
+            self.scroll_into_element(news)
+            self.click(self.locators.NEWS_DETAILS_BUTTON, timeout=10)
 
-        return news.text
+            return news.text
+        except TimeoutException:
+            return None
