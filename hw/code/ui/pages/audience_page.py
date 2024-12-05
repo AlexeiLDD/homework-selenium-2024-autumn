@@ -81,35 +81,30 @@ class AudiencePage(BasePage):
     def input_key_word(self):
         try:
             self.input(self.locators.KEY_WORDS_INPUT, 'биткоин', timeout=1000)
-            time.sleep(3)
         except Exception as e:
             print(f"Error occurred while inputting key word: {e}")
 
     def check_hint_key_words(self):
         try:
             self.find(self.locators.KEY_WORDS_HINT_LABEL, timeout=1000)
-            time.sleep(1)
         except Exception as e:
             print(f"Error occurred while checking hint key words: {e}")
 
     def click_key_word_hint_button(self):
         try:
             self.click(self.locators.KEY_WORDS_HINT_LABEL, timeout=1000)
-            time.sleep(1)
         except Exception as e:
             print(f"Error occurred while clicking key word hint button: {e}")
 
     def check_key_word_hint_opened(self):
         try:
             self.find(self.locators.KEY_WORDS_HINT_WINDOW, timeout=1000)
-            time.sleep(1)
         except Exception as e:
             print(f"Error occurred while checking key word hint opened: {e}")
 
     def click_add_all_button(self):
         try:
             self.click(self.locators.KEY_WORDS_HINT_ADD_BUTTON, timeout=1000)
-            time.sleep(1)
         except Exception as e:
             print(f"Error occurred while clicking add all button: {e}")
 
@@ -128,14 +123,12 @@ class AudiencePage(BasePage):
     def click_save_key_words_button(self):
         try:
             self.click(self.locators.KEY_WORDS_SAVE_BUTTON, timeout=1000)
-            time.sleep(1)
         except Exception as e:
             print(f"Error occurred while clicking save key words button: {e}")
 
     def check_key_words_item_added(self):
         try:
             self.find(self.locators.KEY_WORDS_ITEM_HEADER_LABEL, timeout=1000)
-            time.sleep(1)
         except Exception as e:
             print(f"Error occurred while checking key words item added: {e}")
 

@@ -84,7 +84,6 @@ class LeadFormsPage(BasePage):
     def click_clickable_image_button(self):
         try:
             self.click(self.locators.CLICKABLE_IMAGE, timeout=1000)
-            time.sleep(2)
         except Exception as e:
             print(f"Error occurred while clicking clickable image button: {e}")
 
