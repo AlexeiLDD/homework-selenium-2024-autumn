@@ -30,7 +30,8 @@ class TestSite(BaseCase):
     def test_empty_page(self, site_page):
         title = site_page.empty_page()
 
-        assert title.text == 'Нет привязанных пикселей трекинга'
+        empty_page_title = 'Нет привязанных пикселей трекинга'
+        assert title.text == empty_page_title, f'Expected empty page title to be {empty_page_title}, but got {title.text}'
     
 
     def test_add_pixel_sucess(self, site_page):
@@ -41,7 +42,7 @@ class TestSite(BaseCase):
 
         current_id = site_page.get_pixel_id().text
 
-        assert created_id == current_id
+        assert created_id == current_id, f'Expected created id to be {created_id}, but got {current_id}'
 
         self.delete_pixel(site_page)
 
@@ -50,7 +51,8 @@ class TestSite(BaseCase):
         site_page.add_unvalid_pixel()
         error = site_page.get_domen_input_error()
 
-        assert error.text == 'Введите корректный адрес сайта (вида: example.ru)'
+        error_message = 'Введите корректный адрес сайта (вида: example.ru)'
+        assert error.text == error_message, f'Expected error message to be {error_message}, but got {error.text}'
 
 
     def test_get_setting(self, site_page):
@@ -63,7 +65,7 @@ class TestSite(BaseCase):
 
         url = f'https://ads.vk.com/hq/pixels/{created_id}/events'
         self.wait_url_loading(url)
-        assert url in self.driver.current_url
+        assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
         self.get_site_page()
         self.delete_pixel(site_page)
@@ -81,7 +83,7 @@ class TestSite(BaseCase):
 
         url = f'https://ads.vk.com/hq/pixels/{created_id}/tags'
         self.wait_url_loading(url)
-        assert url in self.driver.current_url
+        assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
         self.get_site_page()
         self.delete_pixel(site_page)

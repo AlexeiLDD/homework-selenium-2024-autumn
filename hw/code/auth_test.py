@@ -10,8 +10,9 @@ class TestLogin(BaseCase):
     def test_login(self, credentials):
         self.login_page.login(credentials['user'], credentials['password'])
 
-        self.wait_url_loading('https://ads.vk.com/hq')
-        assert 'https://ads.vk.com/hq' in self.driver.current_url
+        url = 'https://ads.vk.com/hq'
+        self.wait_url_loading(url)
+        assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
 
 class TestRegistration(BaseCase):
@@ -29,8 +30,9 @@ class TestRegistration(BaseCase):
     def test_registration_success(self):
         registration_page = self.login_page.change_registration_page()
 
-        title = registration_page.registration_success()
-        assert title.text == 'Регистрация кабинета'
+        correct_title = 'Регистрация кабинета'
+        current_title = registration_page.registration_success()
+        assert current_title.text == correct_title, f'Expected registration title to be {correct_title}, but got {current_title.text}'
 
         personal_page = registration_page.teardown()
 
@@ -76,15 +78,18 @@ class TestRegistration(BaseCase):
 
         button = registration_page.prohibited_country_registration()
 
-        assert button.get_property('disabled')
+        assert button.get_property('disabled'), 'Registration button is not disabled'
+    
 
     def test_unvalid_email_registration(self):
         registration_page = self.login_page.change_registration_page()
 
         UNVALID_EMAILS = ['example', 'example@', 'example@mail.', 'example@mail.w']
 
+        error_message = 'Некорректный email адрес'
         for text in registration_page.unvalid_email_registration(UNVALID_EMAILS):
-            assert text == 'Некорректный email адрес'
+            assert text == error_message, f'Expected error message to be {error_message}, but got {text}'
+    
 
     def test_empty_registration(self):
         registration_page = self.login_page.change_registration_page()
@@ -93,6 +98,7 @@ class TestRegistration(BaseCase):
 
         assert alert.text == 'Обязательное поле'
 
+
     def test_unvalid_inn_registration(self):
         registration_page = self.login_page.change_registration_page()
 
@@ -100,17 +106,21 @@ class TestRegistration(BaseCase):
 
         assert alert.text == 'Напишите не меньше 12 символов'
 
+
     def test_switch_language(self):
         registration_page = self.login_page.change_registration_page()
 
         title = registration_page.find(registration_page.locators.TITLE, timeout=1)
 
+        russian_title = 'Добро пожаловать\nв VK Рекламу'
         registration_page.click(registration_page.locators.RUSSIAN_SELECT, timeout=1)
-        assert title.text == 'Добро пожаловать\nв VK Рекламу'
+        assert title.text == russian_title, f'Expected russian title to be {russian_title}, but got {title.text}'
 
+        english_title = 'Welcome \nto VK Ads'
         registration_page.click(registration_page.locators.ENGLISH_SELECT, timeout=1)
-        assert title.text == 'Welcome \nto VK Ads'
+        assert title.text == english_title, f'Expected english title to be {english_title}, but got {title.text}'
 
+    
     # Warning:
     # Метод необходим для сохранения консистентности!
     # После прохождения тестов регистрации необходимо заново зарегистрировать аккаунт!
