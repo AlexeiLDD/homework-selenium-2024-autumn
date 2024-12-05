@@ -1,6 +1,6 @@
 allure-pytest==2.13.5
 allure-python-commons==2.13.5
-attrs==24.2.0
+attrs==22.2.0
 build==0.10.0
 CacheControl==0.12.11
 certifi==2022.12.7
@@ -73,4 +73,3 @@ webencodings==0.5.1
 websocket-client==1.8.0
 wsproto==1.2.0
 zipp==3.15.0
-python-dotenv~=1.0.1
