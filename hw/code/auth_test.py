@@ -73,6 +73,7 @@ class TestRegistration(BaseCase):
         main_page = personal_page.delete_accaunt()
         main_page.pass_func()
 
+
     def test_prohibited_country_registration(self):
         registration_page = self.login_page.change_registration_page()
 

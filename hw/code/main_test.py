@@ -51,7 +51,7 @@ class TestMain(BaseCase):
         self.wait_url_loading(url)
         assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
-        header = self.main_page.find(self.locators.SINGLE_HEADER, timeout=10)
+        header = self.main_page.find(self.locators.HEADER, timeout=10)
         
         assert header.text == case_text, f'Expected case title to be {case_text}, but got {header.text}'
 
@@ -63,7 +63,7 @@ class TestMain(BaseCase):
         self.wait_url_loading(url)
         assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
-        header = self.main_page.find(self.locators.All_HEADER, timeout=10)
+        header = self.main_page.find(self.locators.HEADER, timeout=10)
 
         cases_title = 'Кейсы'
         assert header.text == cases_title, f'Expected cases title to be {cases_title}, but got {header.text}'
@@ -76,7 +76,7 @@ class TestMain(BaseCase):
         self.wait_url_loading(url)
         assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
-        header = self.main_page.find(self.locators.All_HEADER, timeout=10)
+        header = self.main_page.find(self.locators.HEADER, timeout=10)
         
         events_title = 'Мероприятия'
         assert header.text == events_title, f'Expected events title to be {events_title}, but got {header.text}'
@@ -89,6 +89,6 @@ class TestMain(BaseCase):
         self.wait_url_loading(url)
         assert url in self.driver.current_url, f'Expected URL to be {url}, but got {self.driver.current_url}'
 
-        header = self.main_page.find(self.locators.SINGLE_HEADER, timeout=10)
+        header = self.main_page.find(self.locators.HEADER, timeout=10)
         
         assert header.text == news_text, f'Expected news title to be {news_text}, but got {header.text}'
