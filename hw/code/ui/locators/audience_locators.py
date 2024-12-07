@@ -1,50 +1,50 @@
 from selenium.webdriver.common.by import By
 
 class AudiencesLocators:
-    AUDIENCES_BUTTON = (By.XPATH, "//a[@data-testid='left-menu' and contains(., 'Аудитории')]")
-    NO_AUDIENCES_LABEL = (By.XPATH, "//h2[contains(@class, 'vkuiPlaceholder__header') and text()='Аудиторий пока нет']")
+    AUDIENCES_BUTTON = (By.XPATH, "//a[@data-route='audience' and contains(@class, 'sidebar_menuItem')]")
+    NO_AUDIENCES_LABEL = (By.XPATH, "//h2[contains(@class, 'vkuiPlaceholder__header')]")
 
-    LIST_USERS_TAB = (By.XPATH, "//div[@data-testid='tabs-item' and @id='tab_audience.users_list']")
-    NO_LIST_USERS_LABEL = (By.XPATH, "//h2[text()='Списков пользователей пока нет']")
+    LIST_USERS_TAB = (By.XPATH, "//div[@role='tab' and @data-testid='tabs-item' and contains(@class, 'vkuiTabsItem') and @aria-controls='audience.users_list']")
+    NO_LIST_USERS_LABEL = (By.XPATH, "//h2[contains(@class, 'vkuiPlaceholder__header')]")
 
-    OFFLINE_CONVERSIONS_TAB = (By.XPATH, "//div[@data-testid='tabs-item' and @id='tab_audience.offline_conversion']")
-    NO_OFFLINE_CONVERSIONS_LABEL = (By.XPATH, "//h2[text()='Списков офлайн-конверсий пока нет']")
+    OFFLINE_CONVERSIONS_TAB = (By.XPATH, "//div[@role='tab' and @data-testid='tabs-item' and contains(@class, 'vkuiTabsItem') and @aria-controls='audience.offline_conversion']")
+    NO_OFFLINE_CONVERSIONS_LABEL = (By.XPATH, "//h2[contains(@class, 'vkuiPlaceholder__header')]")
 
-    CREATE_AUDIENCE_BUTTON = (By.XPATH, "//button[span/span[text()='Создать аудиторию']]")
-    CREATE_AUDIENCE_HEADER_LABEL = (By.XPATH, "//h2[text()='Создание аудитории']")
+    CREATE_AUDIENCE_BUTTON = (By.XPATH, "//button[@data-testid='create-audience']")
+    CREATE_AUDIENCE_HEADER_LABEL = (By.XPATH, "//h2[contains(@class, 'ModalSidebarPage_title')]")
 
-    ADD_SOURCE_BUTTON = (By.XPATH, "//button[span/span[text()='Добавить источник']]")
-    INCLUDE_SOURCE_HEADER_LABEL = (By.XPATH, "//h2[text()='Включить источник']")
+    ADD_SOURCE_BUTTON = (By.XPATH, "//button[contains(@class, 'vkuiButton') and contains(@class, 'vkuiButton--stretched')]")
+    INCLUDE_SOURCE_HEADER_LABEL = (By.XPATH, "//h2[contains(@class, 'ModalSidebarPage_title')]")
 
-    KEY_WORDS_BUTTON = (By.XPATH, "//div[contains(@class, 'SourceType_button__c4PpZ')]//span[text()='Ключевые фразы']")
-    KEY_WORDS_HEADER_LABEL = (By.XPATH, "//h2[text()='Ключевые фразы']")
+    KEY_WORDS_BUTTON = (By.XPATH, "//div[contains(@class, 'SourceType_button') and contains(@class, 'vkuiSimpleCell')]")
+    KEY_WORDS_HEADER_LABEL = (By.XPATH, "//h2[contains(@class, 'ModalSidebarPage_title')]")
 
-    KEY_WORDS_INPUT = (By.XPATH, "//textarea[@placeholder='Введите фразу и нажмите Enter']")
-    KEY_WORDS_HINT_LABEL = (By.XPATH, "//div[contains(@class, 'Hint_hintTrigger__ixYRu') and starts-with(text(), 'Показать')]")
-    KEY_WORDS_HINT_WINDOW = (By.XPATH, "//button[contains(@class, 'vkuiButton--mode-tertiary') and span/span[text()='Отмена']]")
+    KEY_WORDS_INPUT = (By.XPATH, "//textarea[contains(@class, 'vkuiTextarea__el')]")
+    KEY_WORDS_HINT_LABEL = (By.XPATH, "//div[contains(@class, 'Hint_hintTrigger')]")
+    KEY_WORDS_HINT_WINDOW = (By.XPATH, "//div[contains(@class, 'KeyPhrasesSuggesions_suggestionItemText')]")
 
-    KEY_WORDS_HINT_ADD_BUTTON = (By.XPATH, "//button[contains(@class, 'vkuiButton--mode-primary') and span/span[text()='Добавить все']]")
+    KEY_WORDS_HINT_ADD_BUTTON = (By.XPATH, "//button[@type='button' and contains(@class, 'vkuiButton') and contains(@class, 'vkuiButton--hover')]")
 
-    KEY_WORDS_SAVE_BUTTON = (By.XPATH, "//button[contains(@class, 'vkuiButton--mode-primary') and span/span[text()='Добавить все']]")
-    KEY_WORDS_ITEM_HEADER_LABEL = (By.XPATH, "//h4[contains(@class, 'vkuiHeadline--level-1') and text()='Ключевые фразы']")
+    KEY_WORDS_SAVE_BUTTON = (By.XPATH, "//button[@type='submit' and @data-testid='submit']")
+    KEY_WORDS_ITEM_HEADER_LABEL = (By.XPATH, "//h4[contains(@class, 'vkuiHeadline--sizeY-none') and contains(@class, 'vkuiTypography--weight-1')]")
 
-    SAVE_AUDIENCE_BUTTON = (By.XPATH, "//button[@data-testid='submit' and span/span[text()='Сохранить']]")
-    AUDIENCE_ITEM = (By.XPATH, "//*[@id='audience']/div/div[2]/div/div[2]/div/div/div/div/div[2]/div[1]/div/div/div[2]/div/h5")
-    AUDIENCE_CHECKBOX = (By.XPATH, "//*[@id='audience']/div/div[2]/div/div[2]/div/div/div/div/div[2]/div[2]/div/div/div[1]/label")
+    SAVE_AUDIENCE_BUTTON = (By.XPATH, "//button[@type='submit' and @data-testid='submit']")
+    AUDIENCE_ITEM = (By.XPATH, "//div[@role='gridcell' and contains(@class, 'BaseTable__row-cell')]")
+    AUDIENCE_CHECKBOX = (By.XPATH, "//div[contains(@class, 'vkuiCheckbox__icon') and contains(@class, 'vkuiCheckbox__icon--off')]")
 
-    SHARE_AUDIENCE_BUTTON = (By.XPATH, "//span[contains(@class, 'vkuiButton__in')]/span/svg[use[@xlink:href='#share_outline_24']]")
-    OPEN_ACCESS_HEADER_LABEL = (By.XPATH, "//*[@id='_modal_40-label']")
+    SHARE_AUDIENCE_BUTTON = (By.XPATH, "//button[@data-testid='share-button']")
+    OPEN_ACCESS_HEADER_LABEL = (By.XPATH, "//div[contains(@class, 'vkuiRadio__container')]")
 
-    SAVE_SHARE_AUDIENCE_BUTTON = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div/button[2]")
-    CANCEL_SHARE_AUDIENCE_BUTTON = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div[2]/div/button[1]")
+    SAVE_SHARE_AUDIENCE_BUTTON = (By.XPATH, "//button[@type='submit' and @data-testid='submit']")
+    CANCEL_SHARE_AUDIENCE_BUTTON = (By.XPATH, "//button[@data-testid='cancel']")
 
-    DELETE_AUDIENCE_BUTTON = (By.XPATH, "//span[contains(@class, 'vkuiButton__in')]/span/svg[use[@xlink:href='#delete_outline_24']]")
-    DELETE_AUDIENCE_HEADER_LABEL = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div/div/h2")
+    DELETE_AUDIENCE_BUTTON = (By.XPATH, "//button[@data-testid='remove-items-button']")
+    DELETE_AUDIENCE_HEADER_LABEL = (By.XPATH, "//h2[contains(@class, 'RemoveItemsModal_title')]")
 
-    DELETE_AUDIENCE_INSIDE_MODAL_DELETE_BUTTON = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div[2]/div[1]/div/div/div/div/button[2]")
+    DELETE_AUDIENCE_INSIDE_MODAL_DELETE_BUTTON = (By.XPATH, "//button[contains(@class, 'vkuiButton') and contains(@class, 'vkuiButton--stretched')]")
 
-    UPLOAD_LIST_BUTTON = (By.XPATH, "//*[@id='audience.users_list']/div/div[2]/div/div[2]/div/div/div[2]/div/button")
-    UPLOAD_LIST_HEADER_LABEL = (By.XPATH, "//*[@id='root']/div/div[2]/div/div[2]/div/div[1]/h2")
+    UPLOAD_LIST_BUTTON = (By.XPATH, "//button[@data-testid='create-audience']")
+    UPLOAD_LIST_HEADER_LABEL = (By.XPATH, "//h2[contains(@class, 'ModalSidebarPage_title')]")
 
-    OFFLINE_UPLOAD_LIST_BUTTON = (By.XPATH, "//*[@id='audience.offline_conversion']/div/div[2]/div/div[1]/div[1]/div/button")
-    OFFLINE_UPLOAD_LIST_HEADER_LABEL = (By.XPATH, "//*[@id='root']/div/div[2]/div/div[2]/div/div[1]/h2")
+    OFFLINE_UPLOAD_LIST_BUTTON = (By.XPATH, "//button[@data-testid='create-audience']")
+    OFFLINE_UPLOAD_LIST_HEADER_LABEL = (By.XPATH, "//h2[contains(@class, 'ModalSidebarPage_title')]")
